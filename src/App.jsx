@@ -27,7 +27,7 @@ export const App = () => (
                         transform: 'translate(-50%, -50%) scale(1.5)', // Center and scale
                         background: `
                         linear-gradient(
-                            75deg,
+                            76deg,
                            
                             hsl(40, 100%, 10%), 
                             transparent,
