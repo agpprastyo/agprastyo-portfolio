@@ -1,0 +1,41 @@
+:root {
+  --steps: 18;
+  --background: #262626;
+}
+
+.typing {
+  font-family: 'Inconsolata', Consolas, monospace;
+  font-size: 2vw;
+
+  @media (max-width: 768px) {
+    font-size: 4vw;
+  }
+  color: #d7b94c;
+  position: relative;
+
+  &::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    color: white;
+    background: var(--background);
+    animation: typing 6s steps(var(--steps)) infinite,
+    caret 1s infinite;
+  }
+}
+
+@keyframes typing {
+  0%, 100% {
+    width: 100%;
+  }
+  45%, 90% {
+    width: 0;
+  }
+}
+
+@keyframes caret {
+  50% {
+    color: transparent
+  }
+}

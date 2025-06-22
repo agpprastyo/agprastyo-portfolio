@@ -1,98 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&subset=latin,cyrillic');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 /* styles.css */
-
-
 html, body {
-
-    height: 100%; /* Ensure full height for html and body */
-    margin: 0; /* Remove default margins */
-}
-
-body {
-    /*1e2b32*/
-    background-color: #001d3d;
-    /*background-image:*/
-    /*        radial-gradient(at 74% 15%, hsla(189, 100%, 30%, 1) 0px, transparent 50%), !* Darker variant *!*/
-
-
-    /*        linear-gradient(to top, hsla(255, 100%, 20%, 0.8), hsla(255, 100%, 20%, 0) 80%); !* Dark linear gradient *!*/
-
-    /*background-size: cover; !* Ensure the background covers the entire body *!*/
-    /*background-repeat: no-repeat; !* Prevent the background from repeating *!*/
-    /*background-attachment: fixed; !* Keep the background fixed while scrolling *!*/
-}
-
-.glass {
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.27);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-
-    /* Inner shadow */
-    position: relative; /* Needed for the pseudo-element */
-}
-
-.glass::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 10px; /* Match the parent border radius */
-    box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.5); /* Inner shadow effect */
-    pointer-events: none; /* Prevent interaction with the pseudo-element */
+    font-family: 'Roboto Mono', monospace;
+    height: 100%;
+    margin: 0;
 }
 
 
-@keyframes underline-animation {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-.underline-animation {
-    position: relative;
-}
-
-.underline-animation::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -6px;
-    left: 0;
-    background-color: white; /* Tailwind blue-500 */
-    transition: width 0.3s ease-in-out;
-}
-
-.underline-animation:hover::after {
-    width: 100%;
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
 }
 
 
-@keyframes marquee {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.animate-marquee {
-    animation: marquee 15s linear infinite;
-}
-
-.container {
-    width: 100%; /* Ensure the container takes full width */
-    overflow: hidden; /* Hide overflow */
-}
