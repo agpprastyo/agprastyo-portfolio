@@ -1,80 +1,71 @@
-import { BrowserRouter } from 'react-router-dom';
-
+import {BrowserRouter, Outlet, Route, Routes} from 'react-router-dom';
+import {useEffect, useState} from 'react';
 import Header from "./components/Header.jsx";
-import Hero from "./components/Hero.jsx";
-import TechStack from "./components/TechStack.jsx";
-import Projects from "./components/Projects.jsx";
-import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
-import ScrollToTopButton from "./components/ScrollToTopButton.jsx";
+import Content from "./components/Content.jsx";
 import About from "./components/About.jsx";
+import NotFound from "./components/NotFound.jsx";
+import Contact from "./components/Contact.jsx";
+import Projects from "./components/Projects.jsx";
 
-export const App = () => (
-    <BrowserRouter >
-        <div className="">
-            <Header/>
-            <Hero/>
-            <div className="relative overflow-hidden flex items-center justify-center h-full w-full" >
-                <div
-                    className="absolute"
-                    style={{
-                        top: '50%',  // Center vertically
-                        left: '50%', // Center horizontally
-                        width: '30%', // Adjust width to your preference
-                        height: '40%',
-                        opacity: 0.25,
-                        filter: 'blur(40px)',
-                        transform: 'translate(-50%, -50%) scale(1.5)', // Center and scale
-                        background: `
-                        linear-gradient(
-                            76deg,
-                           
-                            hsl(40, 100%, 10%), 
-                            transparent,
-                            hsl(50, 50%, 30%), 
-                            transparent
-                        )`,
+const SplashScreen = () => (
+    <div className='bg-stone-900 h-screen w-screen flex items-center justify-center'>
+        <div className='flex items-end space-x-1'>
+            <span className='text-3xl font-semibold text-slate-300'>Loading</span>
+            <span className='w-2 h-2 bg-stone-500 rounded-full animate-bounce [animation-delay:-0.3s]'></span>
+            <span className='w-2 h-2 bg-stone-500 rounded-full animate-bounce [animation-delay:-0.15s]'></span>
+            <span className='w-2 h-2 bg-stone-500 rounded-full animate-bounce'></span>
+        </div>
+    </div>
+);
 
-                    }}
-                ></div>
 
-                {/* Content Section centered */}
-                <div className=" z-10 text-center  w-full">
-                    <About/>
-                    <TechStack/>
+// Root layout component that contains the Header, main content area, and Footer
+const RootLayout = () => {
+    return (
+        <div className='bg-stone-900 h-screen w-screen flex items-center justify-center'>
+            <div className='w-[96%] h-[92%] bg-neutral-800 flex flex-col justify-between shadow-lg overflow-hidden'>
+                <Header/>
+                <div className='flex-1 overflow-y-auto px-8 no-scrollbar'>
+                    <Outlet/>
                 </div>
-            </div>
-            <div className=" w-3/4 mx-auto">
-                {/* First Mesh Effect centered */}
-                <div
-                    className="absolute"
-                    style={{
-                        top: '50%',  // Center vertically
-                        left: '50%', // Center horizontally
-                        width: '40%', // Adjust width to your preference
-                        height: '50%',
-                        opacity: 0.2,
-                        filter: 'blur(50px)',
-                        transform: 'translate(-50%, -50%) scale(1.3)', // Center and scale
-                        background: `
-                        linear-gradient(
-                            135deg,
-                            hsl(200, 100%, 30%),  // Dark blue
-                            transparent,
-                            hsl(50, 100%, 50%),   // Bright yellow
-                            transparent
-                        )`,
-                    }}
-                ></div>
-
-
-
+                <Footer/>
             </div>
         </div>
-        <Projects/>
+    );
+};
 
-        <Contact/>
-        <Footer/>
-        <ScrollToTopButton/>
-    </BrowserRouter>
-);
+export const App = () => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (loading) {
+        return <SplashScreen/>;
+    }
+
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<RootLayout/>}>
+
+                    <Route index element={<Content/>}/> {/* Root path */}
+                    {/* Add more routes here */}
+                    <Route path="about" element={<About/>}/>
+                    <Route path="contact" element={<Contact/>}/>
+                    <Route path="projects" element={<Projects/>}/>
+
+                    {/* <Route path="projects" element={<Projects />} /> */}
+                    <Route path="*" element={<NotFound/>}/>
+
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
+};

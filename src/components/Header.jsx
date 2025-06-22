@@ -1,80 +1,95 @@
-import { useState, useEffect } from 'react';
+import {useEffect, useState} from 'react';
+import {Link, useLocation} from 'react-router-dom';
+import {FiMenu, FiX} from "react-icons/fi"; // Using react-icons for clean menu icons
+
+// Reusable NavLink component for DRY code and active state handling
+const NavLink = ({to, children, onClick}) => {
+    const location = useLocation();
+    const isActive = location.pathname === to;
+
+    return (
+        <Link
+            to={to}
+            onClick={onClick}
+            className={`
+                relative text-sm font-medium transition-colors duration-300
+                ${isActive ? 'text-white' : 'text-neutral-400 hover:text-white'}
+            `}
+        >
+            {children}
+            {isActive && (
+                <span
+                    className="absolute -bottom-2 left-1/2 w-2/3 h-0.5 -translate-x-1/2 bg-stone-200 rounded-full"></span>
+            )}
+        </Link>
+    );
+};
 
 const Header = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
 
-    const toggleDrawer = () => {
-        setIsDrawerOpen(!isDrawerOpen);
-    };
-
-    const handleScroll = () => {
-        if (window.scrollY > 0) {
-            setIsScrolled(true);
-        } else {
-            setIsScrolled(false);
-        }
-    };
-
+    // Effect to prevent scrolling when the mobile drawer is open
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        if (isDrawerOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            document.body.style.overflow = 'auto';
         };
-    }, []);
+    }, [isDrawerOpen]);
+
+    const navItems = [
+        {to: "/about", label: "About"},
+        {to: "/projects", label: "Projects"},
+        // {to: "/blog", label: "Blogs"},
+        {to: "/contact", label: "Contact"}
+    ];
 
     return (
-        <header className={` w-full fixed top-0 z-50 transition-colors duration-300 `}>
-            <div className={`lg:w-3/4 lg:mx-auto mx-4  ${isScrolled ? 'lg:mx-auto mt-4 rounded-2xl  glass' : 'mx-4 bg-transparent '}`}>
+        <header className="sticky top-0 z-50">
+            <nav
+                className="mx-auto px-6 py-4 flex justify-between items-center border-b border-neutral-700/50 bg-neutral-800/80 backdrop-blur-sm">
+                <Link to="/" className="text-xl font-bold text-stone-100 tracking-wider">
+                    AGPRASTYO
+                </Link>
 
-            <nav className="container mx-auto lg:p-4 p-2 flex justify-between justify-items-center items-center align-top ">
-                <a href="#hero">
-                    <h1 className={`text-2xl font-bold text-white align-baseline`}>AGPRASTYO</h1>
-                </a>
-                <button
-                    className="md:hidden text-white"
-                    onClick={toggleDrawer}
-                >
-                    ☰
-                </button>
-                <ul className="  hidden md:flex space-x-4 ">
-                    <li><a href="#about" className="underline-animation text-white ">About</a></li>
-
-                    <li><a href="#projects" className="underline-animation text-white ">Projects</a></li>
-                    <li><a href="#contact" className="underline-animation text-white ">Contact</a></li>
-
-                    <li>
-                        <a
-                            href="https://docs.google.com/document/d/1dILeCMcz2CrZCaoHQ-cfrxwe_SIQlCpN3pYR8uJveSs/edit?usp=sharing"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline-animation text-white flex items-center"
-                        >
-                            Resume
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                      d="M20 14a1 1 0 0 0-1 1v3.077c0 .459-.022.57-.082.684a.363.363 0 0 1-.157.157c-.113.06-.225.082-.684.082H5.923c-.459 0-.571-.022-.684-.082a.363.363 0 0 1-.157-.157c-.06-.113-.082-.225-.082-.684L4.999 5.5a.5.5 0 0 1 .5-.5l3.5.005a1 1 0 1 0 .002-2L5.501 3a2.5 2.5 0 0 0-2.502 2.5v12.577c0 .76.083 1.185.32 1.627.223.419.558.753.977.977.442.237.866.319 1.627.319h12.154c.76 0 1.185-.082 1.627-.319.419-.224.753-.558.977-.977.237-.442.319-.866.319-1.627V15a1 1 0 0 0-1-1zm-2-9.055v-.291l-.39.09A10 10 0 0 1 15.36 5H14a1 1 0 1 1 0-2l5.5.003a1.5 1.5 0 0 1 1.5 1.5V10a1 1 0 1 1-2 0V8.639c0-.757.086-1.511.256-2.249l.09-.39h-.295a10 10 0 0 1-1.411 1.775l-5.933 5.932a1 1 0 0 1-1.414-1.414l5.944-5.944A10 10 0 0 1 18 4.945z"
-                                      fill="currentColor"/>
-                            </svg>
-                        </a>
-                    </li>
-
+                {/* Desktop Navigation */}
+                <ul className="hidden md:flex items-center space-x-8">
+                    {navItems.map((item) => (
+                        <li key={item.to}>
+                            <NavLink to={item.to}>{item.label}</NavLink>
+                        </li>
+                    ))}
                 </ul>
-            </nav>
-                {isDrawerOpen && (
-                    <div className="md:hidden glass text-white p-4">
-                        <ul className="space-y-4">
-                            <li><a href="#about" className="underline-animation text-white "
-                                   onClick={toggleDrawer}>About</a></li>
 
-                            <li><a href="#projects" className="underline-animation text-white "
-                                   onClick={toggleDrawer}>Projects</a></li>
-                            <li><a href="#contact" className="underline-animation text-white "
-                                   onClick={toggleDrawer}>Contact</a></li>
-                        </ul>
-                    </div>
-                )}
+                {/* Mobile Menu Button */}
+                <button
+                    className="md:hidden text-stone-200 z-50"
+                    onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+                    aria-label="Toggle menu"
+                >
+                    {isDrawerOpen ? <FiX size={24}/> : <FiMenu size={24}/>}
+                </button>
+            </nav>
+
+            {/* Mobile Drawer Menu */}
+            <div
+                className={`
+                    md:hidden fixed inset-0 z-40 bg-stone-900 bg-opacity-90 backdrop-blur-md transition-transform duration-300 ease-in-out
+                    ${isDrawerOpen ? 'translate-x-0' : 'translate-x-full'}
+                `}
+            >
+                <ul className="h-full flex flex-col justify-center items-center space-y-10">
+                    {navItems.map((item) => (
+                        <li key={item.to}>
+                            <NavLink to={item.to} onClick={() => setIsDrawerOpen(false)}>
+                                <span className="text-2xl font-semibold">{item.label}</span>
+                            </NavLink>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </header>
     );
