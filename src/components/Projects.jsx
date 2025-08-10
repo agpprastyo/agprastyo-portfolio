@@ -3,6 +3,19 @@ import {FiArrowUpRight} from 'react-icons/fi';
 
 const projectsData = [
     {
+        title: 'POS Kasir',
+        date: 'June 2025',
+        description: 'Developed a Point-of-Sale (POS) system using Go, PostgreSQL, and Docker. Implemented RESTful APIs, user authentication, and integrated payment methods. Designed for scalability and maintainability, supporting real-world retail workflows.',
+        features: [
+            'RESTful API Implementation',
+            'User Authentication',
+            'Integrated Payment Methods',
+            'Scalable & Maintainable Design',
+        ],
+        techStack: ['Go', 'PostgreSQL', 'Docker', 'REST API', 'Authentication'],
+        githubLink: 'https://github.com/agpprastyo/POS-kasir',
+    },
+    {
         title: 'GoShort',
         date: 'May 2025 - Present',
         description: 'A high-performance URL shortener service built with Go, demonstrating expertise in backend development, API design, and clean architecture.',
