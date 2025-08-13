@@ -23,8 +23,8 @@ const SplashScreen = () => (
 // Root layout component that contains the Header, main content area, and Footer
 const RootLayout = () => {
     return (
-        <div className='bg-stone-900 h-screen w-screen flex items-center justify-center'>
-            <div className='w-[96%] h-[92%] bg-neutral-800 flex flex-col justify-between shadow-lg overflow-hidden'>
+        <div className='lg:bg-stone-900 bg-neutral-800 h-screen w-screen flex items-center justify-center'>
+            <div className='w-[96%] h-[92%] bg-neutral-800 flex flex-col justify-between lg:shadow-lg overflow-hidden'>
                 <Header/>
                 <div className='flex-1 overflow-y-auto px-8 no-scrollbar'>
                     <Outlet/>

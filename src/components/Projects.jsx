@@ -27,6 +27,12 @@ const projectsData = [
         ],
         techStack: ['Go (Fiber)', 'PostgreSQL', 'React', 'Docker', 'Swagger', 'JWT'],
         githubLink: 'https://github.com/agpprastyo/GoShort',
+        otherLinks: [
+            {
+                label: 'Live Demo',
+                url: 'https://goshort.agprastyo.me',
+            }
+        ],
     },
 
 
@@ -57,7 +63,7 @@ const Projects = () => {
                     {projectsData.map((project, index) => (
                         <article
                             key={index}
-                            className="grid md:grid-cols-3 md:gap-12 py-12 border-b border-neutral-900 last:border-b-0"
+                            className="grid md:grid-cols-3 md:gap-12 py-12 border-b border-neutral-700/50 last:border-b-0"
                         >
                             {/* Left Column: Main Info */}
                             <div className="md:col-span-2 mb-8 md:mb-0">
@@ -84,6 +90,25 @@ const Projects = () => {
                                     View on GitHub
                                     <FiArrowUpRight className="ml-1"/>
                                 </a>
+                                <div className='mt-6'>
+                                    <h4 className="font-semibold text-stone-200 mb-3">Other Links</h4>
+                                    {project.otherLinks && (
+                                        <div className="flex flex-wrap gap-4">
+                                            {project.otherLinks.map((link, i) => (
+                                                <a
+                                                    key={i}
+                                                    href={link.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center justify-center gap-2 bg-stone-200 text-stone-900 font-semibold py-2.5 px-5 text-sm rounded-md hover:bg-stone-300 transition-all duration-300 transform hover:-translate-y-1"
+                                                >
+                                                    <FiArrowUpRight className="ml-1" />
+                                                    {link.label}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
                             {/* Right Column: Tech Details */}
