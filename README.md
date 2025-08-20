@@ -1,20 +1,27 @@
-## React + Vite + TailwindCSS template
+# Agung Prasetyo's Personal Portfolio Website
 
-Create your own project based on this template by running:
+Welcome to the source code for my personal website portfolio! This site showcases my skills, projects, and contact information as a backend developer.
 
-```bash
-npx degit quavedev/react-vite-tailwindcss-template your-project
-```
+**Live Site:** [https://portfolio.agprastyo.me/](https://portfolio.agprastyo.me/)
 
-## Install
+---
+
+## Tech Stack
+- React
+- Vite
+- TailwindCSS
+
+## Getting Started
+
+To run this project locally:
 
 ```bash
 npm install
 ```
 
-> You can make sure you are running Node.js 18 with `nvm`. Run `nvm use` to set the Node.js 18 in this project.
+> Make sure you are running Node.js 18 with `nvm`. Run `nvm use` to set the Node.js 18 in this project.
 
-## Develop
+## Development
 
 ```bash
 npm run dev
@@ -23,21 +30,12 @@ npm run dev
 ## Build
 
 ```bash
-npm build
+npm run build
 ```
 
-Preview:
+## Preview
 
 ```bash
 npm run preview
 ```
 
-## Deploy on zCloud
-
-Create your account at [zcloud.ws](https://zcloud.ws).
-
-Connect to your GitHub, create your app and done!
-
-Push to Deploy.
-
-Or use the preconfigured [action](./.github/workflows/deploy.yaml) to deploy your app. Uncomment all the lines and add your zCloud User Token (ZCLOUD_USER_TOKEN) to your secrets on GitHub and replace `env` placeholder value with your app env name (check it on app.zcloud.ws > Your app env > Settings).
