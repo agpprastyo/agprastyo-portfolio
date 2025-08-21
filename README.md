@@ -19,7 +19,7 @@ To run this project locally:
 npm install
 ```
 
-> Make sure you are running Node.js 18 with `nvm`. Run `nvm use` to set the Node.js 18 in this project.
+> Make sure you are running Node.js 22 with `nvm`. Run `nvm use` to set the Node.js 22 in this project.
 
 ## Development
 
