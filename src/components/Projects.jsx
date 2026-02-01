@@ -1,42 +1,53 @@
 import {FaGithub} from 'react-icons/fa6';
 import {FiArrowUpRight} from 'react-icons/fi';
+import resumeData from '../data/resume.json';
+import { stripHtml } from '../utils/stripHtml';
 
-const projectsData = [
-    {
-        title: 'POS Kasir',
-        date: 'June 2025',
-        description: 'Developed a Point-of-Sale (POS) system using Go, PostgreSQL, and Docker. Implemented RESTful APIs, user authentication, and integrated payment methods. Designed for scalability and maintainability, supporting real-world retail workflows.',
-        features: [
-            'RESTful API Implementation',
-            'User Authentication',
-            'Integrated Payment Methods',
-            'Scalable & Maintainable Design',
-        ],
-        techStack: ['Go', 'PostgreSQL', 'Docker', 'REST API', 'Authentication'],
-        githubLink: 'https://github.com/agpprastyo/POS-kasir',
-    },
-    {
-        title: 'GoShort',
-        date: 'May 2025 - Present',
-        description: 'A high-performance URL shortener service built with Go, demonstrating expertise in backend development, API design, and clean architecture.',
-        features: [
-            'Fast & Efficient with Fiber',
-            'Secure JWT & Basic Authentication',
-            'Protected Swagger API Docs',
-            'Clean & Scalable Architecture',
-        ],
-        techStack: ['Go (Fiber)', 'PostgreSQL', 'React', 'Docker', 'Swagger', 'JWT'],
-        githubLink: 'https://github.com/agpprastyo/GoShort',
-        otherLinks: [
-            {
-                label: 'Live Demo',
-                url: 'https://goshort.agprastyo.me',
-            }
-        ],
-    },
+// Map resume projects to UI-friendly structure
+const projectsData = (resumeData?.sections?.projects?.items || []).map((p) => {
+    const title = p.name || p.title || 'Untitled Project';
+    const date = p.period || p.date || '';
+    const description = stripHtml(p.description || '');
 
+    // Heuristic tech stack extraction based on known keywords
+    const techStack = [];
+    const lower = (description || '').toLowerCase();
+    if (lower.includes('go')) techStack.push('Go');
+    if (lower.includes('fiber')) techStack.push('Fiber');
+    if (lower.includes('postgres')) techStack.push('PostgreSQL');
+    if (lower.includes('redis')) techStack.push('Redis');
+    if (lower.includes('docker')) techStack.push('Docker');
+    if (lower.includes('swagger') || lower.includes('openapi')) techStack.push('Swagger/OpenAPI');
+    if (lower.includes('jwt')) techStack.push('JWT');
+    if (techStack.length === 0) techStack.push('Go', 'Docker');
 
-];
+    // Heuristic features list
+    const features = [];
+    if (lower.includes('authentication')) features.push('Authentication & Authorization');
+    if (lower.includes('rest') || lower.includes('api')) features.push('REST API');
+    if (lower.includes('container') || lower.includes('docker')) features.push('Containerized (Docker)');
+    if (lower.includes('swagger')) features.push('API Documentation (Swagger)');
+    if (features.length === 0) features.push('Clean Architecture', 'Production-ready');
+
+    const githubLink = (p.website && p.website.url) || '';
+    const otherLinks = [];
+    // if website points to github repo but labeled as site, keep as github
+    if (githubLink && githubLink.includes('github.com')) {
+        // keep as githubLink but also set otherLinks empty
+    } else if (githubLink) {
+        otherLinks.push({label: 'Live Demo', url: githubLink});
+    }
+
+    return {
+        title,
+        date,
+        description,
+        features,
+        techStack,
+        githubLink: githubLink && githubLink.includes('github.com') ? githubLink : '',
+        otherLinks,
+    };
+});
 
 const TechBadge = ({children}) => (
     <span className="inline-block bg-neutral-700/80 text-stone-300 text-xs font-medium px-3 py-1 rounded-full">
@@ -81,7 +92,7 @@ const Projects = () => {
                                 </p>
 
                                 <a
-                                    href={project.githubLink}
+                                    href={project.githubLink || project.otherLinks?.[0]?.url || '#'}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center justify-center gap-2 bg-stone-200 text-stone-900 font-semibold py-2.5 px-5 text-sm rounded-md hover:bg-stone-300 transition-all duration-300 transform hover:-translate-y-1"
@@ -142,3 +153,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

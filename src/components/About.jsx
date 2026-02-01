@@ -1,34 +1,48 @@
 import profileImg from '../assets/profile.png';
-import {FiDownload, FiMail, FiMapPin, FiUser} from 'react-icons/fi';
+import {FiDownload, FiMail, FiMapPin, FiUser, FiPhone, FiLink} from 'react-icons/fi';
+import resumeData from '../data/resume.json';
+import { stripHtml } from '../utils/stripHtml';
 
 // Data for personal details - makes the component cleaner and easier to update
 const personalDetails = [
     {
         label: 'Name',
-        value: 'Agung Prasetyo',
+        value: resumeData?.basics?.name || 'Agung Prasetyo',
         icon: FiUser,
     },
     {
         label: 'Email',
-        value: 'prasetyo.agpr@gmail.com',
+        value: resumeData?.basics?.email || 'prasetyo.agpr@gmail.com',
         icon: FiMail,
     },
     {
+        label: 'Phone',
+        value: resumeData?.basics?.phone || '',
+        icon: FiPhone,
+    },
+    {
         label: 'Location',
-        value: 'Yogyakarta, Indonesia',
+        value: resumeData?.basics?.location || 'Yogyakarta, Indonesia',
         icon: FiMapPin,
+    },
+    {
+        label: 'Website',
+        value: resumeData?.basics?.website?.url || '',
+        icon: FiLink,
     },
 ];
 
+const resume = '/resume.pdf'
+
 const About = () => {
+    const bio = stripHtml(resumeData?.summary?.content || 'I\'m a passionate developer with a knack for creating elegant and efficient solutions.');
+
     return (
-        // MODIFICATION: Added classes to control height and vertical alignment on desktop
         <section
             id="about"
             className="h-full flex flex-col justify-center py-16 md:py-0"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                {/* Section Title - Reduced bottom margin for better fit on desktop */}
                 <div className="text-center md:text-left mb-8 md:mb-12">
                     <h2 className="text-4xl lg:text-5xl font-bold text-stone-100 relative inline-block">
                         <span className="relative z-10">About Me</span>
@@ -48,8 +62,8 @@ const About = () => {
                             <div
                                 className="absolute -inset-1.5 bg-gradient-to-r from-neutral-600 to-stone-500 rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                             <img
-                                src={profileImg}
-                                alt="Agung Prasetyo Profile"
+                                src={profileImg ?? '/assets/profile.png'}
+                                alt={`${resumeData?.basics?.name || 'Agung Prasetyo'} Profile`}
                                 className="relative w-full h-full rounded-full object-cover shadow-xl transform transition-transform duration-300 group-hover:scale-105"
                             />
                         </div>
@@ -58,26 +72,26 @@ const About = () => {
                     {/* Bio and Details */}
                     <div className="md:col-span-2 text-center md:text-left">
                         <p className="text-base lg:text-lg leading-relaxed text-neutral-300 mb-6 font-light">
-                            I&apos;m a passionate developer with a knack for creating elegant and efficient solutions.
-                            My
-                            journey in technology has been driven by a constant curiosity and a desire to build things
-                            that make a difference.
+                            {bio}
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-                            {personalDetails.map((detail) => (
-                                <div key={detail.label} className="flex items-center gap-4">
-                                    <detail.icon className="w-5 h-5 text-stone-400 flex-shrink-0"/>
-                                    <div>
-                                        <strong className="text-stone-200 font-medium text-sm">{detail.label}:</strong>
-                                        <p className="text-neutral-400 text-sm">{detail.value}</p>
+                            {personalDetails.map((detail) => {
+                                const Icon = detail.icon;
+                                return (
+                                    <div key={detail.label} className="flex items-center gap-4">
+                                        <Icon className="w-5 h-5 text-stone-400 flex-shrink-0" />
+                                        <div>
+                                            <strong className="text-stone-200 font-medium text-sm">{detail.label}:</strong>
+                                            <p className="text-neutral-400 text-sm">{detail.value}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
 
                         <a
-                            href="/Agung Prasetyo - Backend Developer Resume.pdf"
+                            href={resume}
                             download
                             className="inline-flex items-center justify-center gap-2 bg-stone-200 text-stone-900 font-semibold py-2.5 px-5 text-sm rounded-md hover:bg-stone-300 disabled:bg-neutral-600 transition-all duration-300 transform hover:-translate-y-1"
                         >
@@ -90,5 +104,7 @@ const About = () => {
         </section>
     );
 };
+
+
 
 export default About;
