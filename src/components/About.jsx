@@ -1,110 +1,127 @@
-import profileImg from '../assets/profile.png';
-import {FiDownload, FiMail, FiMapPin, FiUser, FiPhone, FiLink} from 'react-icons/fi';
-import resumeData from '../data/resume.json';
-import { stripHtml } from '../utils/stripHtml';
-
-// Data for personal details - makes the component cleaner and easier to update
-const personalDetails = [
-    {
-        label: 'Name',
-        value: resumeData?.basics?.name || 'Agung Prasetyo',
-        icon: FiUser,
-    },
-    {
-        label: 'Email',
-        value: resumeData?.basics?.email || 'prasetyo.agpr@gmail.com',
-        icon: FiMail,
-    },
-    {
-        label: 'Phone',
-        value: resumeData?.basics?.phone || '',
-        icon: FiPhone,
-    },
-    {
-        label: 'Location',
-        value: resumeData?.basics?.location || 'Yogyakarta, Indonesia',
-        icon: FiMapPin,
-    },
-    {
-        label: 'Website',
-        value: resumeData?.basics?.website?.url || '',
-        icon: FiLink,
-    },
-];
-
-const resume = '/resume.pdf'
+import { Badge } from "./ui/badge";
+import { Separator } from "./ui/separator";
+import { Download } from 'lucide-react';
+import { Button } from "./ui/button";
 
 const About = () => {
-    const bio = stripHtml(resumeData?.summary?.content || 'I\'m a passionate developer with a knack for creating elegant and efficient solutions.');
+    const googleDocExportUrl = "/resume.pdf";
+
+    const aboutData = {
+        summary: "Detail-oriented Backend Developer with hands-on experience in building scalable RESTful APIs using Go and PostgreSQL. Proficient in clean architecture, database integration, and containerized deployment with Docker. Seeking a Junior Backend Engineer position to contribute to real-world development challenges and deliver high-quality, secure software solutions.",
+        skills: [
+            {
+                category: "Backend Development",
+                items: ["Go (Golang)", "RESTful APIs", "Clean Architecture", "JWT Authentication", "RBAC"]
+            },
+            {
+                category: "Databases & Caching",
+                items: ["PostgreSQL (Schema & Queries)", "Redis", "SQL", "Database Migrations"]
+            },
+            {
+                category: "Tools & Workflow",
+                items: ["Git", "Docker", "Docker Compose", "Postman", "Swagger/OpenAPI"]
+            },
+            {
+                category: "Frontend (Basic)",
+                items: ["Flutter", "React", "SvelteKit", "JavaScript/TypeScript"]
+            }
+        ],
+        experience: [
+            {
+                role: "Mobile Flutter Developer Intern",
+                period: "February 2024 - May 2024",
+                company: "PT. Solusi Digital Handal — Yogyakarta",
+                points: [
+                    "Converted **20+ Figma UI designs** into pixel-perfect Flutter widgets across various screen sizes.",
+                    "Integrated **5+ third-party REST APIs** using HTTP packages, ensuring smooth data retrieval.",
+                    "Streamlined application state management using the Bloc pattern, improving codebase readability and reducing debugging time."
+                ]
+            },
+            {
+                role: "Staff Photographer",
+                period: "July 2021 - Present",
+                company: "Laris Studio — Sleman, Yogyakarta",
+                points: [
+                    "Handled client projects from planning to delivery, ensuring high customer satisfaction.",
+                    "Managed time and priorities effectively to meet strict deadlines.",
+                    "Developed strong discipline, responsibility, and client communication skills."
+                ]
+            }
+        ],
+        education: {
+            degree: "Bachelor's Degree in Computer Science",
+            period: "March 2023 - Present",
+            school: "Universitas Siber Muhammadiyah — Yogyakarta"
+        }
+    };
 
     return (
-        <section
-            id="about"
-            className="h-full flex flex-col justify-center py-16 md:py-0"
-        >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="text-center md:text-left mb-8 md:mb-12">
-                    <h2 className="text-4xl lg:text-5xl font-bold text-stone-100 relative inline-block">
-                        <span className="relative z-10">About Me</span>
-                        <span
-                            className="absolute -bottom-2 left-0 w-3/4 h-4 bg-stone-500 transform -translate-y-2 z-0"></span>
-                    </h2>
-                    <p className="mt-4 text-lg text-neutral-400">A brief introduction to my background and skills.</p>
+        <div className="space-y-8 font-mono pb-12">
+            <section className="space-y-4">
+                <div className="flex justify-between items-center border-b pb-4">
+                    <h2 className="text-3xl font-bold">About Me</h2>
+                    <a href={googleDocExportUrl} download target="_blank" rel="noreferrer">
+                        <Button variant="outline" size="sm" className="gap-2">
+                            <Download className="w-4 h-4" /> Download Resume
+                        </Button>
+                    </a>
                 </div>
 
-                {/* Main Content Card */}
-                <div
-                    className="grid md:grid-cols-3 gap-8 lg:gap-20 items-center bg-neutral-800/50  p-8 md:p-10 ">
+                <p className="text-muted-foreground leading-relaxed">
+                    {aboutData.summary}
+                </p>
+            </section>
 
-                    {/* Profile Image */}
-                    <div className="md:col-span-1 flex justify-center">
-                        <div className="relative group w-40 h-40 lg:w-48 lg:h-48">
-                            <div
-                                className="absolute -inset-1.5 bg-gradient-to-r from-neutral-600 to-stone-500 rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-                            <img
-                                src={profileImg ?? '/assets/profile.png'}
-                                alt={`${resumeData?.basics?.name || 'Agung Prasetyo'} Profile`}
-                                className="relative w-full h-full rounded-full object-cover shadow-xl transform transition-transform duration-300 group-hover:scale-105"
-                            />
+            <section>
+                <h2 className="text-2xl font-bold mb-6">Skills</h2>
+                <div className="space-y-6">
+                    {aboutData.skills.map((skillGroup, index) => (
+                        <div key={index}>
+                            <h3 className="font-semibold mb-2 text-sm text-primary/80">{skillGroup.category}:</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {skillGroup.items.map(skill => (
+                                    <Badge key={skill} variant="secondary" className="font-normal">{skill}</Badge>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-
-                    {/* Bio and Details */}
-                    <div className="md:col-span-2 text-center md:text-left">
-                        <p className="text-base lg:text-lg leading-relaxed text-neutral-300 mb-6 font-light">
-                            {bio}
-                        </p>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-                            {personalDetails.map((detail) => {
-                                const Icon = detail.icon;
-                                return (
-                                    <div key={detail.label} className="flex items-center gap-4">
-                                        <Icon className="w-5 h-5 text-stone-400 flex-shrink-0" />
-                                        <div>
-                                            <strong className="text-stone-200 font-medium text-sm">{detail.label}:</strong>
-                                            <p className="text-neutral-400 text-sm">{detail.value}</p>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-
-                        <a
-                            href={resume}
-                            download
-                            className="inline-flex items-center justify-center gap-2 bg-stone-200 text-stone-900 font-semibold py-2.5 px-5 text-sm rounded-md hover:bg-stone-300 disabled:bg-neutral-600 transition-all duration-300 transform hover:-translate-y-1"
-                        >
-                            <FiDownload/>
-                            Download CV
-                        </a>
-                    </div>
+                    ))}
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <Separator />
+
+            <section className="space-y-6">
+                <h2 className="text-2xl font-bold">Experience</h2>
+
+                {aboutData.experience.map((job, index) => (
+                    <div key={index} className="space-y-1">
+                        <div className="flex justify-between items-baseline flex-wrap gap-2">
+                            <h3 className="font-bold text-lg">{job.role}</h3>
+                            <span className="text-sm text-muted-foreground">{job.period}</span>
+                        </div>
+                        <div className="text-sm font-semibold text-primary/80">{job.company}</div>
+                        <ul className="list-disc list-outside ml-4 mt-2 space-y-1 text-sm text-muted-foreground leading-relaxed">
+                            {job.points.map((point, idx) => (
+                                <li key={idx} dangerouslySetInnerHTML={{ __html: point.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </section>
+
+            <Separator />
+
+            <section>
+                <h2 className="text-2xl font-bold mb-4">Education</h2>
+                <div className="space-y-1">
+                    <div className="flex justify-between items-baseline flex-wrap gap-2">
+                        <h3 className="font-bold text-lg">{aboutData.education.degree}</h3>
+                        <span className="text-sm text-muted-foreground">{aboutData.education.period}</span>
+                    </div>
+                    <div className="text-sm text-primary/80">{aboutData.education.school}</div>
+                </div>
+            </section>
+        </div>
     );
 };
-
-
-
 export default About;

@@ -1,339 +1,90 @@
 {
-  "picture": {
-    "hidden": false,
-    "url": "",
-    "size": 64,
-    "rotation": 0,
-    "aspectRatio": 1,
-    "borderRadius": 0,
-    "borderColor": "rgba(0, 0, 0, 0)",
-    "borderWidth": 0,
-    "shadowColor": "rgba(0, 0, 0, 0.5)",
-    "shadowWidth": 0
-  },
-  "basics": {
+  "header": {
     "name": "Agung Prasetyo",
-    "headline": "Backend Developer",
-    "email": "prasetyo.agpr@gmail.com",
-    "phone": "+6285800320277",
-    "location": "Sleman, Yogyakarta 55283",
-    "website": {
-      "url": "https://portfolio.agprastyo.me/",
-      "label": ""
-    },
-    "customFields": []
+    "role": "Backend Developer",
+    "contact": "Sleman, Yogyakarta 52883 | [prasetyo.agpr@gmail.com](mailto:prasetyo.agpr@gmail.com) | [Linkedin](https://www.google.com/search?q=linkedin.com/in/agungprasetyo) | [Personal Website](http://portfolio.agprastyo.me) | [Github](https://github.com/agpprastyo)"
   },
-  "summary": {
-    "title": "Summary",
-    "columns": 1,
-    "hidden": false,
-    "content": "<p>Backend Developer specializing in Go and RESTful API development, with hands-on experience building production-ready systems using PostgreSQL, Redis, Docker, and JWT-based authentication. Comfortable working remotely with self-managed projects and asynchronous collaboration.</p>"
-  },
-  "sections": {
-    "profiles": {
-      "title": "Profiles",
-      "columns": 6,
-      "hidden": false,
+  "summary": "Detail-oriented Backend Developer with hands-on experience in building scalable RESTful APIs using Go and PostgreSQL. Proficient in clean architecture, database integration, and containerized deployment with Docker. Seeking a Junior Backend Engineer position to contribute to real-world development challenges and deliver high-quality, secure software solutions.",
+  "skills": [
+    {
+      "category": "Backend Development",
       "items": [
-        {
-          "id": "k2qg3aw6jiztgctxpmy60qve",
-          "hidden": false,
-          "options": {
-            "showLinkInTitle": true
-          },
-          "icon": "github",
-          "network": "Github",
-          "username": "agpprastyo",
-          "website": {
-            "url": "https://github.com/agpprastyo",
-            "label": ""
-          }
-        },
-        {
-          "id": "fzhk95fhgcl07808tb428zys",
-          "hidden": false,
-          "options": {
-            "showLinkInTitle": true
-          },
-          "icon": "linkedin",
-          "network": "LinkedIn",
-          "username": "agprastyo",
-          "website": {
-            "url": "https://www.linkedin.com/in/agprastyo/",
-            "label": ""
-          }
-        }
+        "Go (Golang)",
+        "RESTful APIs",
+        "Clean Architecture",
+        "JWT Authentication",
+        "RBAC"
       ]
     },
-    "experience": {
-      "title": "Experience",
-      "columns": 1,
-      "hidden": false,
+    {
+      "category": "Databases & Caching",
       "items": [
-        {
-          "id": "g73ih36rszyeic09lppnou1m",
-          "hidden": false,
-          "options": {
-            "showLinkInTitle": false
-          },
-          "company": " PT. Solusi Digital Handal",
-          "position": "Mobile Flutter Developer Intern",
-          "location": "Yogyakarta",
-          "period": "February 2024 - May 2024",
-          "website": {
-            "url": "",
-            "label": ""
-          },
-          "description": "<p>Collaborated with the design team to translate Figma mockups into functional Flutter widgets. Integrated third-party APIs using the HTTP package and maintained a clean, scalable codebase using the Bloc pattern.</p>"
-        },
-        {
-          "id": "g92uhlmw7gxh4yq7dflv4p6q",
-          "hidden": false,
-          "options": {
-            "showLinkInTitle": false
-          },
-          "company": "Laris Studio",
-          "position": " Staff Photographer",
-          "location": "Sleman, Yogyakarta",
-          "period": "July 2021 - Now",
-          "website": {
-            "url": "",
-            "label": ""
-          },
-          "description": "<ul><li><p>Managed client projects from conception to delivery, ensuring clear communication and adherence to deadlines.</p></li><li><p>Collaborated effectively with team members to achieve project goals.</p></li></ul>"
-        }
+        "PostgreSQL (Schema & Queries)",
+        "Redis",
+        "SQL",
+        "Database Migrations"
       ]
     },
-    "education": {
-      "title": "Education",
-      "columns": 1,
-      "hidden": false,
+    {
+      "category": "Tools & Workflow",
       "items": [
-        {
-          "id": "019c1791-a1ba-7578-b841-3abd83f9c824",
-          "hidden": false,
-          "options": {
-            "showLinkInTitle": false
-          },
-          "school": "Universitas Siber Muhammadiyah",
-          "degree": "Bachelor's degree",
-          "area": "Computer Science",
-          "grade": "3.00",
-          "location": "Yogyakarta, Indonesia",
-          "period": "Mar 2023 - Now",
-          "website": {
-            "url": "",
-            "label": ""
-          },
-          "description": ""
-        }
+        "Git",
+        "Docker",
+        "Docker Compose",
+        "Postman",
+        "Swagger/OpenAPI"
       ]
     },
-    "projects": {
-      "title": "Projects",
-      "columns": 1,
-      "hidden": false,
+    {
+      "category": "Frontend (Basic)",
       "items": [
-        {
-          "id": "qf0xanpslwi9m3vj1cue15ki",
-          "hidden": false,
-          "options": {
-            "showLinkInTitle": true
-          },
-          "name": "POS Kasir ",
-          "period": "June 2025 – Present",
-          "website": {
-            "url": "https://pos-kasir.agprastyo.me",
-            "label": ""
-          },
-          "description": "<ul><li><p>Designed and developed a production-ready Point of Sale (POS) system backend using <strong>Go (Fiber)</strong> and <strong>PostgreSQL</strong>, following clean architecture principles.</p></li><li><p>Implemented <strong>JWT-based authentication with refresh token rotation</strong>, role-based access control (admin &amp; cashier), and secure logout using token invalidation strategy.</p></li><li><p>Built RESTful APIs for core POS workflows including product management, categories, orders, payments, discounts, and tax calculations.</p></li><li><p>Containerized the application using <strong>Docker &amp; Docker Compose</strong>, and exposed services securely using <strong>Cloudflare Tunnel</strong> for production-like deployment.</p></li><li><p>Applied API documentation using <strong>Swagger/OpenAPI</strong>, database migrations, structured logging, and environment-based configuration.</p></li></ul><p></p>"
-        },
-        {
-          "id": "vzyr9uhsukii4446xkjbdlhu",
-          "hidden": false,
-          "options": {
-            "showLinkInTitle": true
-          },
-          "name": "Go Short",
-          "period": "May 2025",
-          "website": {
-            "url": "https://github.com/agpprastyo/GoShort",
-            "label": ""
-          },
-          "description": "<p>Independently designed, developed, and deployed a URL Shortener, demonstrating full-cycle project management. Implemented secure RESTful APIs with JWT authentication and utilized Docker for streamlined local deployment.</p>"
-        }
+        "Flutter",
+        "React",
+        "SvelteKit",
+        "JavaScript/TypeScript"
       ]
-    },
-    "skills": {
-      "title": "Skills",
-      "columns": 1,
-      "hidden": false,
-      "items": [
-        {
-          "id": "m0j2y4f9ggoj0ez8w2gi2osv",
-          "hidden": false,
-          "icon": "",
-          "name": "Backend Development",
-          "proficiency": "Go (Golang) • Fiber • REST API Design • JWT Authentication • Role-Based Access Control • Swagger/OpenAPI • Clean Architecture",
-          "level": 0,
-          "keywords": []
-        },
-        {
-          "id": "zdsl6qzble92eg3nibx9tatt",
-          "hidden": false,
-          "icon": "",
-          "name": "Databases & Caching",
-          "proficiency": "PostgreSQL • Redis • SQL • Data Modeling • Database Migrations",
-          "level": 0,
-          "keywords": []
-        },
-        {
-          "id": "o9gcyhb9islj0lu1extxisn9",
-          "hidden": false,
-          "icon": "",
-          "name": "Developer & Collaboration Tools: ",
-          "proficiency": "Git, Docker, Postman, Firebase, Supabase.",
-          "level": 0,
-          "keywords": []
-        },
-        {
-          "id": "019c178d-d44c-71bd-a08d-09e302bdf636",
-          "hidden": false,
-          "icon": "acorn",
-          "name": "Frontend & Fullstack",
-          "proficiency": "Flutter (mobile UI) • React / SvelteKit (dasar) • TypeScript / JavaScript (dasar)",
-          "level": 0,
-          "keywords": []
-        }
-      ]
-    },
-    "languages": {
-      "title": "Languages",
-      "columns": 2,
-      "hidden": false,
-      "items": [
-        {
-          "id": "vrqqcb80hutptah7pc5ry8ce",
-          "hidden": false,
-          "language": "English",
-          "fluency": "",
-          "level": 0
-        },
-        {
-          "id": "voqgepa8366p9iz1yho5zb9o",
-          "hidden": false,
-          "language": "Indonesian",
-          "fluency": "",
-          "level": 0
-        }
-      ]
-    },
-    "interests": {
-      "title": "Interests",
-      "columns": 1,
-      "hidden": false,
-      "items": []
-    },
-    "awards": {
-      "title": "Awards",
-      "columns": 1,
-      "hidden": false,
-      "items": []
-    },
-    "certifications": {
-      "title": "Certifications",
-      "columns": 1,
-      "hidden": false,
-      "items": []
-    },
-    "publications": {
-      "title": "Publications",
-      "columns": 1,
-      "hidden": false,
-      "items": []
-    },
-    "volunteer": {
-      "title": "Volunteering",
-      "columns": 1,
-      "hidden": false,
-      "items": []
-    },
-    "references": {
-      "title": "References",
-      "columns": 1,
-      "hidden": false,
-      "items": []
     }
-  },
-  "customSections": [],
-  "metadata": {
-    "template": "kakuna",
-    "layout": {
-      "sidebarWidth": 35,
-      "pages": [
-        {
-          "fullWidth": false,
-          "main": [
-            "summary",
-            "profiles",
-            "projects",
-            "experience",
-            "education",
-            "volunteer",
-            "references",
-            "skills",
-            "interests",
-            "certifications",
-            "awards",
-            "publications",
-            "languages"
-          ],
-          "sidebar": []
-        }
-      ]
+  ],
+  "projects": [
+    {
+      "title": "POS Kasir Full Stack Point of Sales \\- Personal Project",
+      "date": "June 2025 - Present",
+      "stack": [
+        "Golang (Fiber)",
+        "React",
+        "PostgreSQL",
+        "Cloudflare R2",
+        "JWT",
+        "Swagger",
+        "Docker",
+        "Midtrans API"
+      ],
+      "description": [
+        "Developed a scalable backend system for a Point of Sale (POS) application, creating 50+ RESTful API endpoints for inventory and transaction management.",
+        "Integrated a dynamic QRIS via Midtrans API (Sandbox mode), enabling automated and secure cashless transaction processing.",
+        "Secured application endpoints by implementing robust JWT authentication (access & refresh tokens) and Role-Based Access Control (RBAC) for 3 distinct user roles.",
+        "Accelerated local development setup time by 50% by containerizing the application and database environments using Docker and Docker Compose.",
+        "Ensured seamless frontend-backend integration by comprehensively documenting 100% of the APIs using Swagger/OpenAPI."
+      ],
+      "links": "POS Kasir – Full Stack Point of Sales \\- Personal Project | [Source Code](https://github.com/agpprastyo/POS-kasir) | [Live Demo](https://pos-kasir.agprastyo.me)"
     },
-    "css": {
-      "enabled": false,
-      "value": "* {\n\toutline: 1px solid #000;\n\toutline-offset: 4px;\n}"
-    },
-    "page": {
-      "gapX": 4,
-      "gapY": 4,
-      "marginX": 24,
-      "marginY": 24,
-      "format": "a4",
-      "locale": "en-US",
-      "hideIcons": true
-    },
-    "design": {
-      "level": {
-        "icon": "star",
-        "type": "circle"
-      },
-      "colors": {
-        "primary": "rgba(71, 85, 105, 1)",
-        "text": "rgba(0, 0, 0, 1)",
-        "background": "rgba(255, 255, 255, 1)"
-      }
-    },
-    "typography": {
-      "body": {
-        "fontFamily": "Times New Roman",
-        "fontWeights": [
-          "400"
-        ],
-        "fontSize": 9.712499999999999,
-        "lineHeight": 1.25
-      },
-      "heading": {
-        "fontFamily": "Times New Roman",
-        "fontWeights": [
-          "600"
-        ],
-        "fontSize": 14,
-        "lineHeight": 1.5
-      }
-    },
-    "notes": ""
-  }
+    {
+      "title": "GoShort URL Shortener | Personal Project",
+      "date": "Mar 2025 - May 2025",
+      "stack": [
+        "Go",
+        "PostgreSQL",
+        "Docker",
+        "JWT"
+      ],
+      "description": [
+        "Engineered a reliable URL shortener service capable of generating unique short links and redirecting users with minimal latency.",
+        "Designed and integrated RESTful APIs, securing user-specific data and actions via JWT authentication.",
+        "Deployed the application and PostgreSQL database efficiently using Docker containers."
+      ],
+      "links": "GoShort URL Shortener | Personal Project | [Source Code](https://github.com/agpprastyo/GoShort)"
+    }
+  ],
+  "experience": "Mobile Flutter Developer Intern  \nPT. Solusi Digital Handal — Yogyakarta  \nFebruary 2024 – May 2024\n\n Converted 20+ Figma UI designs into pixel-perfect Flutter widgets across various screen sizes.  \n Integrated 5+ third-party REST APIs using HTTP packages, ensuring smooth data retrieval.  \n Streamlined application state management using the Bloc pattern, improving codebase readability and reducing debugging time.\n\nAdditional Experience\nStaff Photographer  \nLaris Studio — Sleman, Yogyakarta  \nJuly 2021 – Present\n\n Handled client projects from planning to delivery, ensuring high customer satisfaction.  \n Managed time and priorities effectively to meet strict deadlines.  \n Developed strong discipline, responsibility, and client communication skills.",
+  "education": "Bachelor’s Degree in Computer Science  \nUniversitas Siber Muhammadiyah — Yogyakarta  \nMarch 2023 – Present"
 }

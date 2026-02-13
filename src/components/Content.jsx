@@ -1,18 +1,35 @@
-import '../assets/glitch.scss';
-import '../assets/typing.scss';
-import resumeData from '../data/resume.json';
+import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
 
 const Content = () => {
-    const name = (resumeData?.basics?.name || 'AGUNG PRASETYO').toUpperCase();
-    const headline = resumeData?.basics?.headline || 'Backend Developer';
-
     return (
-        <div>
-            <div className=' flex flex-col items-center justify-center'>
-                <div className='lg:mt-72 mt-40 mb-32 flex flex-col items-center justify-center'>
-                    <h1 className="glitch text-neutral-300 " data-text={`I'm ${name}`}>{`I'm ${name}`}</h1>
-                    <h1 className="typing">{headline}</h1>
-                </div>
+        <div className="flex flex-col justify-center min-h-[60vh] space-y-8 font-mono">
+            <div className="space-y-4">
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">
+                    Agung Prasetyo
+                </h1>
+                <p className="text-xl md:text-2xl text-muted-foreground">
+                    Backend Developer & Software Engineer
+                </p>
+            </div>
+
+            <p className="max-w-xl text-muted-foreground leading-relaxed">
+                Building scalable, reliable, and secure backend systems.
+                Focusing on Go, PostgreSQL, and Clean Architecture.
+            </p>
+
+            <div className="flex gap-4">
+                <Link to="/projects">
+                    <Button size="lg" className="gap-2">
+                        View Projects <ArrowRight className="w-4 h-4" />
+                    </Button>
+                </Link>
+                <Link to="/contact">
+                    <Button variant="outline" size="lg">
+                        Contact Me
+                    </Button>
+                </Link>
             </div>
         </div>
     );
