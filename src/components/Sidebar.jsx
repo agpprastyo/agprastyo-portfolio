@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { Separator } from "./ui/separator";
 
-const Sidebar = () => {
+const Sidebar = ({ onItemClick }) => {
     const location = useLocation();
 
     const navItems = [
@@ -28,7 +28,7 @@ const Sidebar = () => {
         <aside className="w-full  flex flex-col justify-between my-8">
             <div className="">
                 <div className="mb-8 text-right">
-                    <Link to="/">
+                    <Link to="/" onClick={onItemClick}>
                         <h1 className="text-2xl font-bold tracking-tight font-mono">Agung Prasetyo</h1>
                     </Link>
                     <p className="text-muted-foreground mt-2 text-sm font-mono">Backend Developer</p>
@@ -36,7 +36,7 @@ const Sidebar = () => {
 
                 <nav className="flex flex-col space-y-2 ">
                     {navItems.map((item) => (
-                        <Link key={item.path} to={item.path}>
+                        <Link key={item.path} to={item.path} onClick={onItemClick}>
                             <Button
                                 variant="ghost"
                                 className={cn(
