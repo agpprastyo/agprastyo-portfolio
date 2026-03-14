@@ -20,7 +20,7 @@ const Sidebar = ({ onItemClick }) => {
 
     const socialLinks = [
         { icon: <Github className="h-4 w-4" />, href: "https://github.com/agpprastyo", label: "Github" },
-        { icon: <Linkedin className="h-4 w-4" />, href: "https://linkedin.com/in/agpprastyo", label: "LinkedIn" },
+        { icon: <Linkedin className="h-4 w-4" />, href: "https://linkedin.com/in/agprastyo", label: "LinkedIn" },
         { icon: <Mail className="h-4 w-4" />, href: "mailto:prasetyo.agpr@gmail.com", label: "Email" },
     ];
 
