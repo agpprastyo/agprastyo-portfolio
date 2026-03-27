@@ -1,5 +1,3 @@
-import { useLocation } from "react-router-dom";
-import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 import {
     Github,
@@ -14,7 +12,6 @@ import { ThemeToggle } from "./ThemeToggle";
 import profilePhoto from "../assets/profile.png";
 
 const Sidebar = ({ onItemClick }) => {
-    const location = useLocation();
 
     const navItems = [
         { name: "Welcome", path: "#", icon: <Home className="h-4 w-4" /> },
@@ -38,7 +35,7 @@ const Sidebar = ({ onItemClick }) => {
                         <img src={profilePhoto} alt="Profile" className="w-full h-full object-cover" />
                     </div>
                     <div className="flex flex-col justify-center">
-                        <h1 className="text-sm font-semibold leading-none text-foreground">Agung's Space</h1>
+                        <h1 className="text-sm font-semibold leading-none text-foreground">Agung&apos;s Space</h1>
                     </div>
                 </div>
 

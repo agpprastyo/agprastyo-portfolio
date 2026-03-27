@@ -2,7 +2,7 @@ import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
 import profilePhoto from "../assets/profile.png";
-import { Github, Linkedin, Mail, MapPin, Briefcase, GraduationCap } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 
 const sectionVariants = {
