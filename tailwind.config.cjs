@@ -17,7 +17,6 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                mono: ['"Tektur"', 'sans-serif'],
                 sans: ['"Inter"', 'sans-serif'],
             },
             colors: {
