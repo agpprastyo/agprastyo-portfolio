@@ -25,7 +25,18 @@ const Contact = () => {
                 </div>
 
                 {/* Simple Form */}
-                <form className="space-y-4 pt-6" action="mailto:prasetyo.agpr@gmail.com" method="post" encType="text/plain">
+                <form 
+                    className="space-y-4 pt-6" 
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        const formData = new FormData(e.currentTarget);
+                        const name = formData.get('name');
+                        const email = formData.get('email');
+                        const message = formData.get('message');
+                        const mailtoUrl = `mailto:prasetyo.agpr@gmail.com?subject=Contact from ${name}&body=From: ${name} (${email})%0D%0A%0D%0AMessage:%0D%0A${message}`;
+                        window.location.href = mailtoUrl;
+                    }}
+                >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-1.5">
                             <label htmlFor="name" className="text-sm font-medium text-foreground/80">Name</label>

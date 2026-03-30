@@ -59,7 +59,7 @@ const Sidebar = ({ onItemClick }) => {
                 <div className="flex items-center justify-between">
                     <div className="flex space-x-1">
                         {socialLinks.map((link) => (
-                            <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
+                            <a key={link.label} href={link.href} {...(link.href.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
                                 <Button variant="ghost" size="icon" title={link.label} className="text-muted-foreground hover:bg-black/5 dark:hover:bg-white/5 h-8 w-8">
                                     {link.icon}
                                 </Button>
