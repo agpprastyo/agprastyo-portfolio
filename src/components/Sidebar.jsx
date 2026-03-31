@@ -9,7 +9,7 @@ import {
     Home
 } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
-import profilePhoto from "../assets/profile.png";
+import profilePhoto from "../assets/profile.webp";
 
 const Sidebar = ({ onItemClick }) => {
 

@@ -1,7 +1,7 @@
 import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
-import profilePhoto from "../assets/profile.png";
+import profilePhoto from "../assets/profile.webp";
 import { Github, Linkedin, Mail, MapPin, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 
