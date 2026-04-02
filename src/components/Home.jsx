@@ -10,6 +10,7 @@ const sectionVariants = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
+
 const Home = () => {
     return (
         <div className="flex flex-col w-full">
@@ -34,7 +35,7 @@ const Home = () => {
 
                         {/* Social Links */}
                         <div className="flex gap-4">
-                            <a href="https://github.com/agprastyo" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1.5 hover:bg-secondary rounded-md">
+                            <a href="https://github.com/agpprastyo" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1.5 hover:bg-secondary rounded-md">
                                 <Github className="w-5 h-5" />
                             </a>
                             <a href="https://linkedin.com/in/agprastyo" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-foreground transition-colors p-1.5 hover:bg-secondary rounded-md">
